@@ -5,7 +5,7 @@
 
   font-size: 13px;
 
-  padding: 0 0 0 0;
+  padding: 0 0 10px 0;
 
   border-radius: 8px;
   box-shadow: 0px 2px 8px 0px #0000001A;;
@@ -54,6 +54,8 @@
 }
 .item__text:hover{
   background-color: #F1FCFF;
+
+  border-radius: 6px;
 }
 
 

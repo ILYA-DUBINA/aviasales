@@ -39,12 +39,13 @@ const aviasalesSlice = createSlice({
     emptyTransferThreeTransfer: [],
     emptyTransferArrayContainer: [],
     emptyTransferArrayContainerAll: [],
+    emptyTransferOptimalOne: [],
+    emptyTransferOptimalTwo: [],
     status: null,
     error: null,
   },
   reducers: {
     addClickTransfers(state = this.initialState, action) {
-      console.log(state.nonStop);
       switch (action.payload.type) {
         case showAllTransfer:
           return { ...state, allTransfer: !state.allTransfer };
@@ -125,10 +126,10 @@ const aviasalesSlice = createSlice({
       state.emptyTransferTwoTransfer = state.emptyTransferArrayContainerAll.sort(
         (a, b) => parseFloat(a.segments[0].duration) - parseFloat(b.segments[0].duration)
       );
-      state.emptyTransferThreeTransfer = state.emptyTransferOneTransfer.filter(
+      state.emptyTransferOptimalOne = state.emptyTransferOneTransfer.filter(
         (item, index, array) => array[index] === array[number]
       );
-      state.emptyTransferNonStop = state.emptyTransferTwoTransfer.filter(
+      state.emptyTransferOptimalTwo = state.emptyTransferTwoTransfer.filter(
         (item, index, array) => array[index] === array[number]
       );
 
@@ -140,10 +141,10 @@ const aviasalesSlice = createSlice({
       };
       const arraysEqual = (a1, a2) => a1.length === a2.length && a1.every((o, idx) => objectsEqual(o, a2[idx]));
 
-      if (arraysEqual(state.emptyTransferThreeTransfer, state.emptyTransferNonStop) === true) {
-        state.emptyTransferArray = [...state.emptyTransferThreeTransfer, ...state.emptyTransferNonStop];
+      if (arraysEqual(state.emptyTransferOptimalOne, state.emptyTransferOptimalTwo) === true) {
+        state.emptyTransferArray = [...state.emptyTransferOptimalOne, ...state.emptyTransferOptimalTwo];
       } else {
-        state.emptyTransferArray = state.emptyTransferThreeTransfer;
+        state.emptyTransferArray = state.emptyTransferOptimalOne;
       }
     },
   },
@@ -154,13 +155,14 @@ const aviasalesSlice = createSlice({
     },
     [fetchAviasales.fulfilled]: (state, action) => {
       state.status = 'resolved';
-      // state.emptyTransferArray = action.payload;
       state.emptyTransferArrayContainer = action.payload;
       state.emptyTransferArrayContainerAll = action.payload;
       state.emptyTransferNonStop = action.payload;
       state.emptyTransferOneTransfer = action.payload;
       state.emptyTransferTwoTransfer = action.payload;
       state.emptyTransferThreeTransfer = action.payload;
+      state.emptyTransferOptimalOne = action.payload;
+      state.emptyTransferOptimalTwo = action.payload;
     },
     [fetchAviasales.rejected]: (state, action) => {
       state.status = 'rejected';
