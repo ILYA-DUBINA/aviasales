@@ -1,0 +1,51 @@
+@font-face {
+  font-family: "OpenSans-Regular";
+  font-weight: 400;
+  src: local("OpenSans-Regular"), url(../fonts/OpenSans-Regular.ttf) format("opentype");
+}
+@font-face {
+  font-family: "OpenSans-SemiBold";
+  font-weight: 600;
+  src: local("OpenSans-SemiBold"), url(../fonts/OpenSans-SemiBold.ttf) format("opentype");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #E5E5E5;
+}
+.container{
+  font-family: 'OpenSans-Regular';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;  
+
+  color: #4A4A4A;
+}
+.container__inside{
+  width: 100%;
+  max-width: 790px;
+  
+  padding: 0 15px;
+
+  margin: 0 auto;
+  @media (max-width: 570px) {
+    padding: 0 35px;
+  }
+}
+.aviasales{
+  margin: 50px 0 120px 0;
+}
+.aviasales__icon{
+  max-width: 60px;
+
+  margin: 0 auto;
+}
+.aviasales__content{
+  display: flex;
+  
+  margin: 50px 0 0 0;
+}
+
