@@ -14,14 +14,19 @@ const BodyCards = () => {
   const dispatch = useDispatch();
   const allTransfer = useSelector((state) => state.aviasales);
   const { status, error } = useSelector((state) => state.aviasales);
+  let elements;
 
   useEffect(() => {
     dispatch(fetchAviasales());
   }, [dispatch]);
 
-  let elements = allTransfer.emptyTransferArray.map((item) => {
-    return <Card key={_uniqueId()} {...item}></Card>;
-  });
+  if (allTransfer.emptyTransferArray.length !== 0) {
+    elements = allTransfer.emptyTransferArray.map((item) => {
+      return <Card key={_uniqueId()} {...item} />;
+    });
+  } else {
+    elements = <h2 style={{ color: 'red' }}>Рейсов, подходящих под заданные фильтры, не найдено</h2>;
+  }
 
   return (
     <>

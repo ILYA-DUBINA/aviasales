@@ -76,7 +76,9 @@ const aviasalesSlice = createSlice({
       //   state.emptyTransferArray = [...state.emptyTransferArray, ...state.emptyTransferNonStop];
       // }
 
-      if (state.nonStop) {
+      if (state.allTransfer) {
+        state.emptyTransferArray = state.emptyTransferArrayContainerAll;
+      } else if (state.nonStop) {
         state.emptyTransferArray = state.emptyTransferNonStop.filter(
           (itemThree) =>
             itemThree.segments[0].stops.length === action.payload ||
@@ -101,7 +103,7 @@ const aviasalesSlice = createSlice({
             itemThree.segments[1].stops.length === action.payload
         );
       } else {
-        state.emptyTransferArray = state.emptyTransferArrayContainerAll;
+        state.emptyTransferArray = [];
       }
     },
     searchCheapestTicket: (state) => {
@@ -152,7 +154,7 @@ const aviasalesSlice = createSlice({
     },
     [fetchAviasales.fulfilled]: (state, action) => {
       state.status = 'resolved';
-      state.emptyTransferArray = action.payload;
+      // state.emptyTransferArray = action.payload;
       state.emptyTransferArrayContainer = action.payload;
       state.emptyTransferArrayContainerAll = action.payload;
       state.emptyTransferNonStop = action.payload;

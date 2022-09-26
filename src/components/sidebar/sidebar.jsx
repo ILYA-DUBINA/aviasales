@@ -12,6 +12,7 @@ const Sidebar = () => {
 
   const onClickAllTransfer = () => {
     dispatch(addClickTransfers({ type: showAllTransfer }));
+    dispatch(addFilterTransfers());
   };
   const onClickNonStop = () => {
     dispatch(addClickTransfers({ type: showNonStop }));
