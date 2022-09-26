@@ -119,10 +119,10 @@ const aviasalesSlice = createSlice({
     searchOptimalTicket(state) {
       let number = state.emptyTransferArray.length / 2;
 
-      state.emptyTransferOneTransfer = state.emptyTransferArray.sort(
+      state.emptyTransferOneTransfer = state.emptyTransferArrayContainerAll.sort(
         (a, b) => parseFloat(a.price) - parseFloat(b.price)
       );
-      state.emptyTransferTwoTransfer = state.emptyTransferArray.sort(
+      state.emptyTransferTwoTransfer = state.emptyTransferArrayContainerAll.sort(
         (a, b) => parseFloat(a.segments[0].duration) - parseFloat(b.segments[0].duration)
       );
       state.emptyTransferThreeTransfer = state.emptyTransferOneTransfer.filter(
