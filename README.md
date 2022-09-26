@@ -1,1 +1,1 @@
-Ссылка на развернутое приложение https://todo-template-master-five-mco4z26gr-ilya-dubina.vercel.app/
+Ссылка на развернутое приложение https://aviasales-w1z7.vercel.app/
